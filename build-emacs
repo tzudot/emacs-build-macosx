@@ -16,8 +16,8 @@ cd ${SRC_DIR}
 if test -n "$1"; then
     commit="$1"
 else
-    commit="origin/master"
-    git pull
+    commit="origin/tzudot"
+    git pull origin tzudot
 fi
 
 git archive --format tar $commit | tar -C ../${BUILD_DIR} -xvf -
@@ -130,5 +130,6 @@ rm -f ../tmp.dmg
 hdiutil makehybrid -hfs -hfs-volume-name "$DESCR" -hfs-openfolder _out _out -o ../tmp.dmg
 hdiutil convert -format UDZO ../tmp.dmg -o "../${DESCR}.dmg"
 
+cd ../
 rm -rf ${BUILD_DIR}
 rm -rf tmp.dmg
